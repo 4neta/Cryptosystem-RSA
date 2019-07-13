@@ -22,8 +22,7 @@ def find_e(x):
             return e
 
 def find_mmi(a, b): # mmi - modular multiplicative inverse (of a mod b)
-                    # we are sure that inverse exists
-    u = 1
+    u = 1           # we are sure that inverse exists
     w = a
     x = 0
     z = b
