@@ -15,10 +15,10 @@ def gcd(a, b):
         a = temp
     return a
 
-def find_e(numb):
+def find_e(x):
     while True:
-        e = random.randrange(3, numb, 2) # n should be odd
-        if gcd(e, numb) != 1: # checking if e and n are relatively prime
+        e = random.randrange(3, x, 2) # n should be odd
+        if gcd(e, x) == 1: # checking if e and x are relatively prime
             return e
 
 def find_mmi(a, b): # mmi - modular multiplicative inverse (of a mod b)
@@ -41,20 +41,23 @@ def find_mmi(a, b): # mmi - modular multiplicative inverse (of a mod b)
 print('-- RSA Algorithm \\ GENERATING KEYS --')
 print("Choose two big prime numbers: ")
 
-p = int(input(" p = "))
-q = int(input(" q = "))
+p = int(input(" 10 < p = "))
+q = int(input(" 12 < q = "))
 
 if is_prime(p) == True and is_prime(q) == True:
     euler = (p - 1) * (q - 1)
     n = p * q
-    e = find_e(n)
+    e = find_e(euler)
     d = find_mmi(e, euler)
     while e == d or d == 1:
         e = find_e(n)
         d = find_mmi(e, euler)
 
-    print("Your public key: (%d,%d)" % (e, n))
-    print("Your private key: (%d,%d)" % (d, n))
+    if (e*d)%euler==1:
+        print("Your public key: (%d,%d)" % (e, n))
+        print("Your private key: (%d,%d)" % (d, n))
+    else:
+        print("Error")
 
 else:
     print("Sorry, p or q are not a prime numbers.")
