@@ -18,11 +18,11 @@ def gcd(a, b):
 def find_e(x):
     while True:
         e = random.randrange(3, x, 2) # n should be odd
-        if gcd(e, x) == 1: # checking if e and x are relatively prime
+        if gcd(e, x) == 1:            # checking if e and x are relatively prime
             return e
 
 def find_mmi(a, b): # mmi - modular multiplicative inverse (of a mod b)
-    # we are sure that inverse exists
+                    # we are sure that inverse exists
     u = 1
     w = a
     x = 0
